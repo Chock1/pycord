@@ -404,6 +404,11 @@ class HTTPClient:
         if self.__session:
             await self.__session.close()
 
+    def _token(self, token, *, bot=True):
+        self.token = token
+        self.bot_token = bot
+        self._ack_token = None
+
     # login management
 
     async def static_login(self, token: str, bot) -> user.User:
